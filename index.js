@@ -12,7 +12,7 @@ app.set('view engine','handlebars');
 app.set('views','./views');
 app.engine('handlebars');
 */
-app.use(express.static(__dirname + 'public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(oauth);
 
 app.use(parser.json());
