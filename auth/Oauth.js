@@ -15,7 +15,6 @@ passport.use('provider',new OAuth2Strategy(
   credentials
   ,function(accessToken, refreshToken, profile, done){
    console.log(this.arguments)
-   done(null,profile);
 })
             );
 
