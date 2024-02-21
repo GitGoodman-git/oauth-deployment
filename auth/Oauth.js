@@ -11,7 +11,8 @@ const credentials={
     scope:["email"
     ]
     }
-passport.use('provider',new OAuth2Strategy(
+
+    passport.use('provider',new OAuth2Strategy(
   credentials
   ,(accessToken, refreshToken, profile, done)=>{
    console.log("Args:",this.arguments)
@@ -21,6 +22,9 @@ passport.use('provider',new OAuth2Strategy(
             );
 
 const router=express.Router();
+router.use(passport.initialize());
+router.use(passport.session());
+
 router.use("/auth/redirect",passport.authenticate('provider',{
 failureRedirect:"/"}),(req,res)=>{res.redirect("/home")});
 

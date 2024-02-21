@@ -13,8 +13,15 @@ app.set('views','./views');
 app.engine('handlebars');
 */
 //app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+   secret: 'your-secret-key',
+   resave: false,
+   saveUninitialized: false
+}));
+
 app.use(oauth);
 
+// Initialize Passport.js
 //app.use(parser.json());
 //app.use(parser.urlencoded({ extended: true }));
 app.use('/home',(req,res)=>{
