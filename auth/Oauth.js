@@ -21,10 +21,10 @@ const credentials={
   });
   passport.use('provider',new OAuth2Strategy(
    credentials
-  ,(accessToken, refreshToken, profile, done)=>{
+  ,(accessToken, refreshToken, profile,done)=>{
    console.log("Args:",this.arguments)
    console.log(profile);
-   done(null,profile)
+   return done(null,profile)
 })
             );
 
