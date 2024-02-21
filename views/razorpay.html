@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Razorpay Payment Gateway</h1>
+  <form action="/pay" method="POST">
+    <input type="hidden" name="amount" value="100">
+    <input type="hidden" name="currency" value="INR">
+    <input type="hidden" name="name" value="Razorpay">
+    <input type="hidden" name="description" value="Razorpay Payment">
+    <input type="hidden" name="image" value="https://example.com/image.png">
+    <input type="hidden" name="prefill.name" value="Gaurav Kumar">
+    <input type="hidden" name="prefill.email" value="ejeyd@example.com">
+    <input type="hidden" name="prefill.contact" value="9876543210">
+    <input type="hidden" name="notes.address" value="Razorpay Inc., Palo Alto">
+    <input type="hidden" name="theme.color" value="#F37254">
+    <button type="submit">Pay with Razorpay</button>
+  </form>
+</body>
+</html>

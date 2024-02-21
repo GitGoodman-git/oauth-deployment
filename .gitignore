@@ -1,0 +1,10 @@
+node_modules/
+target/
+bin/
+build/
+
+.vscode/
+
+*.tmp
+*.bak
+*.env
