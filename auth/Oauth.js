@@ -8,12 +8,19 @@ const credentials={
     callbackURL:process.env.redirect_uris,
     tokenURL:process.env.token_uri,
     authorizationURL:process.env.auth_uri,
-    scope:["email"
-    ]
+    passReqToCallback   : true,
+    scope:["email",'profile']
     }
 
-    passport.use('provider',new OAuth2Strategy(
-  credentials
+  passport.serializeUser(function(user, done) {
+      done(null, user);
+  });
+  
+  passport.deserializeUser(function(user, done) {
+          done(null, user);
+  });
+  passport.use('provider',new OAuth2Strategy(
+   credentials
   ,(accessToken, refreshToken, profile, done)=>{
    console.log("Args:",this.arguments)
    console.log(profile);
@@ -22,11 +29,9 @@ const credentials={
             );
 
 const router=express.Router();
-router.use(passport.initialize());
-router.use(passport.session());
 
 router.use("/auth/redirect",passport.authenticate('provider',{
-failureRedirect:"/"}),(req,res)=>{res.redirect("/home")});
+failureRedirect:"/failure"}),(req,res)=>{res.redirect("/passed")});
 
 router.use("/auth/oauth",passport.authenticate('provider'))
 
