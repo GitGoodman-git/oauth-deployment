@@ -13,15 +13,16 @@ const credentials={
     }
 passport.use('provider',new OAuth2Strategy(
   credentials
-  ,function(accessToken, refreshToken, profile, done){
+  ,(accessToken, refreshToken, profile, done)=>{
    console.log("Args:",this.arguments)
    console.log(profile);
+   done(null,profile)
 })
             );
 
 const router=express.Router();
 router.use("/auth/redirect",passport.authenticate('provider',{
-failureRedirect:"/login"}),(req,res)=>{res.redirect("/home")});
+failureRedirect:"/"}),(req,res)=>{res.redirect("/home")});
 
 router.use("/auth/oauth",passport.authenticate('provider'))
 
