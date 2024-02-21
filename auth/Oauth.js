@@ -30,10 +30,10 @@ const credentials={
 
 const router=express.Router();
 
-router.use("/auth/redirect",passport.authenticate('provider',{
+router.get("/auth/redirect",passport.authenticate('provider',{
 failureRedirect:"/failure"}),(req,res)=>{res.redirect("/passed")});
 
-router.use("/auth/oauth",passport.authenticate('provider'))
+router.get("/auth/oauth",passport.authenticate('provider'))
 
 module.exports=router;
 
